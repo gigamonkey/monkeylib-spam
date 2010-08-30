@@ -1,17 +1,17 @@
 (in-package :cl-user)
 
 (defpackage :com.gigamonkeys.spam
-  (:use :common-lisp :com.gigamonkeys.pathnames)
+  (:nicknames :spam)
+  (:use :common-lisp
+        :com.gigamonkeys.pathnames
+        :com.gigamonkeys.utilities)
   (:export
-   :add-directory-to-corpus
-   :add-file-to-corpus
-   :classify
+   :make-feature-database
    :clear-database
+   :intern-feature
    :train
-   :ham
-   :spam
-   :*max-ham-score*
-   :*min-spam-score*))
+   :untrain
+   :classify))
 
 
 

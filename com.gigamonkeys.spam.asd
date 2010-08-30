@@ -15,7 +15,11 @@
   :long-description ""
   :components
   ((:file "packages")
-   (:file "spam" :depends-on ("packages")))
-  :depends-on (:cl-ppcre :com.gigamonkeys.pathnames))
+   (:file "spam" :depends-on ("packages"))
+   (:file "testing" :depends-on ("packages"))
+   (:file "utilities" :depends-on ("packages")))
+  :depends-on (:cl-ppcre 
+               :com.gigamonkeys.pathnames 
+               :com.gigamonkeys.utilities))
 
         
