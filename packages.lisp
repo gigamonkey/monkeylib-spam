@@ -11,9 +11,6 @@
    :intern-feature
    :train
    :untrain
-   :classify))
-
-
-
-
-
+   :classify
+   :all-features
+   :feature-spamminess))
