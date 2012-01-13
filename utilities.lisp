@@ -1,14 +1,14 @@
 (in-package :com.gigamonkeys.spam)
 
 (defun explain-classification (features db)
-  (multiple-value-bind (classification score) (classify features db)
+  (multiple-value-bind (classification score) (classify features)
     (format t "Classification: ~a; score: ~,5f~%" classification score)
     (dolist (feature (sorted-interesting features db))
       (show-feature feature db))))
 
 (defun show-all-features (db)
   (loop for feature being the hash-values of (features db) do (show-feature feature db)))
-  
+
 (defun show-feature (feature db)
   (if (untrained-p feature)
       (format t "~&~2t~s~30tuntrained~%" (id feature))

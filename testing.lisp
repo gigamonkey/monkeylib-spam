@@ -4,7 +4,7 @@
 (defparameter *corpus* (make-array 1000 :adjustable t :fill-pointer 0))
 
 (defun extract-words (text)
-  "Simple function to extract words from a text." 
+  "Simple function to extract words from a text."
   (delete-duplicates
    (cl-ppcre:all-matches-as-strings "[a-zA-Z]{3,}" text)
    :test #'string=))
@@ -46,8 +46,8 @@
   (loop for idx from start below (or end (length corpus)) collect
         (destructuring-bind (file type) (aref corpus idx)
           (multiple-value-bind (classification score)
-              (classify (extract-features (start-of-file file *max-chars*) db) db)
-            (list 
+              (classify (extract-features (start-of-file file *max-chars*) db))
+            (list
              :file file
              :type type
              :classification classification
@@ -83,7 +83,7 @@
   (eql (result-type result) 'correct))
 
 (defun analyze-results (results)
-  (let* ((keys '(total correct false-positive 
+  (let* ((keys '(total correct false-positive
                  false-negative missed-ham missed-spam))
          (counts (loop for x in keys collect (cons x 0))))
     (dolist (item results)
@@ -93,5 +93,3 @@
           for (label . count) in counts
           do (format t "~&~@(~a~):~20t~5d~,5t: ~6,2f%~%"
                      label count (* 100 (/ count total))))))
-
-
