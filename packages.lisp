@@ -13,4 +13,8 @@
    :untrain
    :classify
    :all-features
-   :feature-spamminess))
+   :feature-spamminess
+
+   :id
+   :hams
+   :spams))
